@@ -1,18 +1,13 @@
-import type { OpenAPIV3 } from 'openapi-types'
-import type { ReferenceConfiguration } from '@scalar/types'
-import type { SwaggerUIOptions } from './swagger/types'
-
+import type { OpenAPIV3 } from 'openapi-types';
+import type { ReferenceConfiguration } from '@scalar/types';
+import type { SwaggerUIOptions } from './swagger/types';
 export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
     /**
      * Customize Swagger config, refers to Swagger 2.0 config
      *
      * @see https://swagger.io/specification/v2/
      */
-    documentation?: Omit<
-        Partial<OpenAPIV3.Document>,
-        | 'x-express-openapi-additional-middleware'
-        | 'x-express-openapi-validation-strict'
-    >
+    documentation?: Omit<Partial<OpenAPIV3.Document>, 'x-express-openapi-additional-middleware' | 'x-express-openapi-validation-strict'>;
     /**
      * Choose your provider, Scalar or Swagger UI
      *
@@ -20,18 +15,18 @@ export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
      * @see https://github.com/scalar/scalar
      * @see https://github.com/swagger-api/swagger-ui
      */
-    provider?: 'scalar' | 'swagger-ui'
+    provider?: 'scalar' | 'swagger-ui';
     /**
      * Version to use for Scalar cdn bundle
      *
      * @default 'latest'
      * @see https://github.com/scalar/scalar
      */
-    scalarVersion?: string
+    scalarVersion?: string;
     /**
      * Optional override to specifying the path for the Scalar bundle
      *
-     * Custom URL or path to locally hosted Scalar bundle 
+     * Custom URL or path to locally hosted Scalar bundle
      *
      * Lease blank to use default jsdeliver.net CDN
      *
@@ -40,13 +35,13 @@ export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
      * @example '/public/standalone.js'
      * @see https://github.com/scalar/scalar
      */
-    scalarCDN?: string
+    scalarCDN?: string;
     /**
      * Scalar configuration to customize scalar
      *'
      * @see https://github.com/scalar/scalar/blob/main/documentation/configuration.md
      */
-    scalarConfig?: ReferenceConfiguration
+    scalarConfig?: ReferenceConfiguration;
     /**
      * Version to use for swagger cdn bundle
      *
@@ -54,66 +49,48 @@ export interface ElysiaSwaggerConfig<Path extends string = '/swagger'> {
      *
      * @default 4.18.2
      */
-    version?: string
+    version?: string;
     /**
      * Determine if Swagger should exclude static files.
      *
      * @default true
      */
-    excludeStaticFile?: boolean
+    excludeStaticFile?: boolean;
     /**
      * The endpoint to expose Swagger
      *
      * @default '/swagger'
      */
-    path?: Path
+    path?: Path;
     /**
      * Paths to exclude from Swagger endpoint
      *
      * @default []
      */
-    exclude?: string | RegExp | (string | RegExp)[]
+    exclude?: string | RegExp | (string | RegExp)[];
     /**
      * Options to send to SwaggerUIBundle
      * Currently, options that are defined as functions such as requestInterceptor
      * and onComplete are not supported.
      */
-    swaggerOptions?: Omit<
-        Partial<SwaggerUIOptions>,
-        | 'dom_id'
-        | 'dom_node'
-        | 'spec'
-        | 'url'
-        | 'urls'
-        | 'layout'
-        | 'pluginsOptions'
-        | 'plugins'
-        | 'presets'
-        | 'onComplete'
-        | 'requestInterceptor'
-        | 'responseInterceptor'
-        | 'modelPropertyMacro'
-        | 'parameterMacro'
-    >
+    swaggerOptions?: Omit<Partial<SwaggerUIOptions>, 'dom_id' | 'dom_node' | 'spec' | 'url' | 'urls' | 'layout' | 'pluginsOptions' | 'plugins' | 'presets' | 'onComplete' | 'requestInterceptor' | 'responseInterceptor' | 'modelPropertyMacro' | 'parameterMacro'>;
     /**
      * Custom Swagger CSS
      */
     theme?: string | {
-        light: string
-        dark: string
-    }
+        light: string;
+        dark: string;
+    };
     /**
      * Using poor man dark mode 😭
      */
-    autoDarkMode?: boolean
-
+    autoDarkMode?: boolean;
     /**
      * Exclude methods from Swagger
      */
-    excludeMethods?: string[]
-
+    excludeMethods?: string[];
     /**
      * Exclude tags from Swagger or Scalar
      */
-    excludeTags?: string[]
+    excludeTags?: string[];
 }
